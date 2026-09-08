@@ -1,0 +1,38 @@
+# PLAN.md — Figma Feedback → GitHub Issues Agent
+
+## Problem
+Designers leave feedback as comments directly on Figma files, but that feedback doesn't turn into actionable engineering work until someone manually re-types it into a GitHub issue. That translation step is slow, easy to forget, and loses context (which comment, which frame, which screenshot).
+
+## Goal
+Build a small agent that reads open comments on a given Figma file and drafts a corresponding GitHub issue for each one — so designer feedback becomes actionable within minutes instead of days.
+
+## Non-Goals
+- Not auto-resolving or auto-implementing the feedback — the agent only drafts the issue, a human still decides what to build.
+- Not covering FigJam boards or Slides in v1 — Design files only.
+- Not handling comment threads/replies in v1 — top-level comments only.
+
+## Users
+- **Product designers** who leave feedback in Figma and want it acted on.
+- **Engineers** who currently re-type comments into tickets by hand.
+
+## How it should work (rough flow)
+1. Given a Figma file link, the agent fetches all open (unresolved) comments.
+2. For each comment, the agent drafts a GitHub issue: title, description, a link back to the exact comment, and a screenshot if one is attached.
+3. Drafts are shown to the designer for review — nothing is published to GitHub without explicit confirmation.
+
+## Acceptance Criteria
+- [ ] Given a Figma file link, the agent lists every open comment on it.
+- [ ] Each comment produces exactly one draft issue with a working link back to that comment.
+- [ ] No issue is created on GitHub without the designer confirming it first.
+- [ ] Successfully demoed against a real Figma file with at least 5 comments.
+
+## Risks / Open Questions
+- Figma API rate limits — how many comments can be fetched per run?
+- What happens when one comment implies multiple issues (e.g. "fix all the buttons on this page")?
+- How do we avoid creating duplicate issues if the agent is run twice on the same file?
+
+## Milestones
+- **Day 1:** Read comments from a Figma file via the Figma API/MCP.
+- **Day 2:** Draft one clean issue from one comment.
+- **Day 3:** Handle multiple comments in a batch, attach screenshots.
+- **Day 4:** Demo live against a real design file.

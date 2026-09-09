@@ -1,4 +1,4 @@
-# PLAN.md — Figma Feedback → GitHub Issues Agent
+# PLAN.md — Figma Feedback → GitHub Issues Agent 0 edited
 
 ## Problem
 Designers leave feedback as comments directly on Figma files, but that feedback doesn't turn into actionable engineering work until someone manually re-types it into a GitHub issue. That translation step is slow, easy to forget, and loses context (which comment, which frame, which screenshot).
